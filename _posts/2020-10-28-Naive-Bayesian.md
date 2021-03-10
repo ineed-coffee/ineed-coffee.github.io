@@ -6,6 +6,7 @@ categories: [ML/DL,Machine Learning]
 tags: [naive-bayesian,sklearn,r,python]
 toc: true
 comments: true
+typora-root-url: ../
 ---
 # :mag: Index
 
@@ -66,7 +67,7 @@ __'__ 사건 A 가 일어났을때 B가 일어날 확률 __'__  과 같은 __조
 
 조건부 확률의 계산은 위 표현식들의 조합을 통해 이루어진다.
 	
-![eq1](http://latex2png.com/pngs/07ca123db3b2f8938fc1e23b23a59b46.png)
+![eq1](https://latex2png.com/pngs/07ca123db3b2f8938fc1e23b23a59b46.png)
 
 말로 풀어보자면 ,
 
@@ -82,7 +83,7 @@ __'__ 사건 A 가 일어났을때 B가 일어날 확률 __'__  과 같은 __조
 
  앞의 조건부 확률 계산식으로부터 결합확률 `P(B∩A)` 는 다음과 같이 다시 쓸 수 있는데 , 
 
-​	![eq2](http://latex2png.com/pngs/30b647f653394dafd803f3501b8932c7.png) 
+​	![eq2](https://latex2png.com/pngs/30b647f653394dafd803f3501b8932c7.png) 
 
 ​	
 

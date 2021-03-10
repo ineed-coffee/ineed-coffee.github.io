@@ -6,6 +6,7 @@ categories: [ML/DL,Machine Learning]
 tags: [decision tree,sklearn,r,python]
 toc: true
 comments: true
+typora-root-url: ../
 ---
 # :mag: Index
 
@@ -63,11 +64,11 @@ comments: true
 
 순도,불순도를 수치로 나타내기 위한 종류는 대표적으로 3가지가 있다. 바로 `Entropy` , `Gini Index` , `Misclassification Error` 인데, 이 중 `Entropy` 지표에 대해 알아보자면 다음과 같은 식으로 정의된다.
 
-![초기 엔트로피](../assets/inital_entropy.PNG)
+![초기 엔트로피](/assets/inital_entropy.PNG)
 
 초기 m 개의 분류를 가진 데이터에 대해서는 위의 식 처럼 각 분류의 확률과 확률의 로그값을 모두 더한 값이 초기 엔트로피 값이다. 이 상태에서 데이터나 나뉘게 되면 다음과 같은 방식으로 엔트로피를 구하게 된다.
 
-![일반 엔트로피](../assets/general_entropy.PNG)
+![일반 엔트로피](/assets/general_entropy.PNG)
 
 각 나뉜 각 그룹에 대해 엔트로피를 구한 다음 그룹의 상대 부피인 R 값을 곱하여 다시 더하는 식이다. 
 
@@ -339,7 +340,7 @@ fig.set_size_inches(20,20)
 tree_picture = pt(model,ax=ax1)
 ```
 
-![트리 그림](../assets/DT_visualize.jpg)
+![트리 그림](/assets/DT_visualize.jpg)
 
 ---
 

@@ -6,6 +6,7 @@ categories: [ML/DL,Machine Learning]
 tags: [random forest,sklearn,python]
 toc: true
 comments: true
+typora-root-url: ../
 ---
 # :mag: Index
 
