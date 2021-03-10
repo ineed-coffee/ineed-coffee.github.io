@@ -96,7 +96,7 @@ $$ P(B \cap A) = P(B|A) \times P(A) $$
 
 ​	
 
-$$P(B \cap A) = P(B|A) \times P(A) \dots \dots 2$$
+$$P(B \cap A) = P(B|A) \times P(A) \dots \dots 1$$
 
 $$P(A \cap B) = P(A|B) \times P(B) \dots \dots 2$$
 
@@ -104,7 +104,7 @@ $$P(B \cap A) = P(A \cap B) \dots \dots 3$$
 
 $$P(B|A) \times P(A) = P(A|B) \times \dots \dots 4$$
 
-$$\therfore P(B|A) = \frac{P(A|B \times P(B))}{P(A)} \dots \dots 5
+$$\therfore P(B|A) = \frac{P(A|B \times P(B))}{P(A)} \dots \dots 5$$
 
 ​	
 
@@ -166,8 +166,10 @@ $$\therfore P(B|A) = \frac{P(A|B \times P(B))}{P(A)} \dots \dots 5
 
 ​	
 
-![eq8](http://latex2png.com/pngs/5bf8c19a135b0811e238644356fc9389.png)
-	
+$$
+Posterior = \frac{Likelihood \times Prior}{Evidence}
+$$
+​	
 
 ---
 
@@ -196,7 +198,10 @@ $$\therfore P(B|A) = \frac{P(A|B \times P(B))}{P(A)} \dots \dots 5
 
 ​	
 
-![eq9](http://latex2png.com/pngs/de5ee5958726ceef0eb9eaecf04aae89.png)
+$$
+probability = P(label=7|input=3) = P(B|A)
+$$
+
 
 ​	
 
@@ -209,7 +214,10 @@ $$\therfore P(B|A) = \frac{P(A|B \times P(B))}{P(A)} \dots \dots 5
 
 ​	
 
-![eq10](http://latex2png.com/pngs/2c8fa23bde3d5c2038c14b56c64ab435.png)
+$$
+P(label=7|input=3) = \frac{P(input=3|label=7) \times P(label=7)}{P(input=3)}
+$$
+
 
 ​	
 
@@ -255,7 +263,10 @@ __그렇기 때문에 나이브 베이지안 모델에서는 모든 독립사건
 
 ​	
 
-![eq11](http://latex2png.com/pngs/3c0b4a46385dda7704ee14a04f928e5c.png)
+$$
+P(A \cap B) = P(A) \times P(B)
+$$
+
 
 ​	
 
@@ -263,7 +274,10 @@ __그렇기 때문에 나이브 베이지안 모델에서는 모든 독립사건
 
 ​	
 
-![eq12](http://latex2png.com/pngs/498b03bf3dd8dd97ed555792e8d63a88.png)
+$$
+P(B|A,C) = \frac{P(A,C|B) \times P(B)}{P(A,C)} = \frac{P(A|B) \times P(C|B) \times P(B)}{P(A) \times P(B)}
+$$
+
 
 ​	
 
@@ -271,7 +285,10 @@ __그렇기 때문에 나이브 베이지안 모델에서는 모든 독립사건
 
 ​		
 
-![eq13](http://latex2png.com/pngs/dac3978996b03e766c971f2382b865bf.png)
+$$
+P(B|A,C) \propto P(A|B) \times P(C|B) \times P(B)
+$$
+
 
 ​	
 
