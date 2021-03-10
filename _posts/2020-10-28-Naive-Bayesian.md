@@ -67,7 +67,6 @@ __'__ 사건 A 가 일어났을때 B가 일어날 확률 __'__  과 같은 __조
 
 조건부 확률의 계산은 위 표현식들의 조합을 통해 이루어진다.
 	
-![eq1](http://latex2png.com/pngs/07ca123db3b2f8938fc1e23b23a59b46.png)
 $$
 P(B|A) = \frac {P(B \cap A)}{P(A)}
 $$
@@ -87,7 +86,9 @@ $$
 
  앞의 조건부 확률 계산식으로부터 결합확률 `P(B∩A)` 는 다음과 같이 다시 쓸 수 있는데 , 
 
-​	![eq2](http://latex2png.com/pngs/30b647f653394dafd803f3501b8932c7.png) 
+​	 
+
+$$ P(B \cap A) = P(B|A) \times P(A) $$
 
 ​	
 
@@ -95,16 +96,15 @@ $$
 
 ​	
 
+$$P(B \cap A) = P(B|A) \times P(A) \dots \dots 2$$
 
-![eq3](http://latex2png.com/pngs/f4932910004bb23e7ac13a53808d3ccc.png)
+$$P(A \cap B) = P(A|B) \times P(B) \dots \dots 2$$
 
-![eq4](http://latex2png.com/pngs/8df60e63c6507429f811eaaca10cc2f3.png)
+$$P(B \cap A) = P(A \cap B) \dots \dots 3$$
 
-![eq5](http://latex2png.com/pngs/41e8904688dbaf94742f2c506f145cf7.png)
+$$P(B|A) \times P(A) = P(A|B) \times \dots \dots 4$$
 
-![eq6](http://latex2png.com/pngs/3d7564b2e288e1e91d8e703d31c526d0.png)
-
-![eq7](http://latex2png.com/pngs/42618b976784d87909a85a9037f4dc1e.png)
+$$\therfore P(B|A) = \frac{P(A|B \times P(B))}{P(A)} \dots \dots 5
 
 ​	
 
