@@ -1,5 +1,5 @@
 ---
-title:Git&Github 개념 정리
+title: Git&Github 개념 정리
 author: INEED COFFEE
 date: 2020-09-20 14:00:00 +0800
 categories: [Git&Github]
