@@ -28,7 +28,7 @@ description: >-                        # used by seo meta and the atom feed
   I'm glad you stopped by.
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
-url: https://ineed-coffee.github.io/
+url: https://ineed-coffee.github.io
 #url: http://127.0.0.1:4000/
 
 author: INEED COFFEE               # change to your full name
