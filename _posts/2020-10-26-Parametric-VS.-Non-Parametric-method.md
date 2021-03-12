@@ -19,7 +19,7 @@ typora-root-url: ../
 
 
 
-### :radio_button: 모수적 방법이란? (Parametric method) <a id="idx1"></a>
+### :radio_button: 모수적 방법이란? (Parametrics method) <a id="idx1"></a>
 
 ​	
 
