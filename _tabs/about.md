@@ -38,4 +38,10 @@ order: 4
 
 ### Contact
 
-[![mail-icon](https://www.flaticon.com/svg/static/icons/svg/561/561188.svg){: width="30" .left}](leey93ssu@gmail.com) 
+​	
+
+<p align="left">
+    <a href=mailto:leey93ssu@gmail.com target="blank">
+        <img align="center" src=https://www.flaticon.com/svg/static/icons/svg/561/561188.svg alt="ineed-coffee" width="30" />
+    </a>
+</p>
