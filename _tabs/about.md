@@ -38,4 +38,4 @@ order: 4
 
 ### Contact
 
-![mail-icon](https://www.flaticon.com/svg/static/icons/svg/561/561188.svg){: width="30" .left} 
+[![mail-icon](https://www.flaticon.com/svg/static/icons/svg/561/561188.svg){: width="30" .left}](leey93ssu@gmail.com) 
