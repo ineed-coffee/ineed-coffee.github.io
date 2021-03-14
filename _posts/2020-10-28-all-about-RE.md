@@ -2,8 +2,8 @@
 title: Regular Expression
 author: INEED COFFEE
 date: 2020-10-28 14:00:00 +0800
-categories: [Languages,regular expression]
-tags: [Regular Expression,python]
+categories: [Languages,Regular Expression]
+tags: [regular expression,python]
 toc: true
 comments: true
 typora-root-url: ../
