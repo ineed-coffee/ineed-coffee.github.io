@@ -6,6 +6,7 @@ categories: [Git&Github]
 tags: [git,github,jekyll,github-page]
 toc: true
 comments: true
+math: true
 typora-root-url: ../
 ---
 # Github Page 입문을 위한 Jekyll 환경 구축 ( Windows 10)

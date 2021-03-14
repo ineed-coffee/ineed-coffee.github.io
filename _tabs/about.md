@@ -37,9 +37,5 @@ order: 4
 ---
 
 ### Contact
-<p align="left">
-	<a href=mailto:leey93ssu@gmail.com target="blank">
-        <img align="center" src=https://www.flaticon.com/svg/static/icons/svg/561/561188.svg alt="ineed-coffee" height="30" width="30">
-    </a>
-</p>
 
+![mail-icon](https://www.flaticon.com/svg/static/icons/svg/561/561188.svg){: width="30" .left} 
