@@ -4,7 +4,7 @@ icon: fas fa-info
 order: 4
 ---
 
-
+[![ineed-coffee's GitHub stats](https://github-readme-stats.vercel.app/api?username=ineed-coffee&count_private=true&show_icons=true&theme=slateorange)](https://github.com/ineed-coffee/ineed-coffee)  
 ![custom badge](https://img.shields.io/badge/status-FOCUSED-blueviolet){: .normal}![custom badge2](https://img.shields.io/badge/version-0.1.%3F%3F%3F-orange){: .normal}
 <h1 align="left">Hi there <img src="https://media.giphy.com/media/iDOOSqoC0k3VeT9rd5/giphy.gif" width="75px"></h1>
 
@@ -15,12 +15,15 @@ order: 4
 
   
 
-
 :coffee: __I'm learning hard to become data scientist , ML&DL engineer__ 
+
+​	
 
 :coffee: __I majored in `Electronic Engineering` and got interested in machine/deep learning while working on my undergraduate thesis__  
 - [Application of Machine Learning for OFDM signal detection](https://github.com/ineed-coffee/Application-of-Machine-Learning-for-OFDM-signal-detection) 
   
+
+​	
 
 :coffee: __Here's a list of projects I participated in__ 
 
@@ -34,14 +37,17 @@ order: 4
   
 - 😷 Facial mask-Area-Detection 을 활용한 올바른 마스크 착용 여부 판단 [covid19_mask_detection](https://github.com/ineed-coffee/covid19_mask_detection) 
 
+  
+
 ---
 
 ### Contact
 
-​	
-
 <p align="left">
-    <a href=mailto:leey93ssu@gmail.com target="blank">
-        <img align="center" src=https://www.flaticon.com/svg/static/icons/svg/561/561188.svg alt="ineed-coffee" width="30" />
+    <a href="mailto:leey93ssu@gmail.com" target="blank">
+        <img src="https://www.flaticon.com/svg/static/icons/svg/561/561188.svg" alt="ineed-coffee" width=45>
     </a>
 </p>
+
+
+

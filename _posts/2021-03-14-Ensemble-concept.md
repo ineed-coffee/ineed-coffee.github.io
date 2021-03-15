@@ -39,9 +39,8 @@ __머신러닝/딥러닝에서 앙상블이란 여러 단일 예측(or 분류)�
 
 뛰어난 성능의 단일 모델도 물론 좋지만, 적당한 성능의 여러 단일 모델 조합하여 앙상블 모델을 활용하면 더 뛰어난 일반화 성능을 자랑하는 경우가 많기 때문에 지금까지도 이를 활용한 연구가 활발히 진행되고 있다.
 
-<p align="center">
-    <img src="https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory2&fname=http%3A%2F%2Fcfile1.uf.tistory.com%2Fimage%2F277EC53454C39CD9353783" alt="집단지성" width=300
-</p>
+
+![집단지성](https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory2&fname=http%3A%2F%2Fcfile1.uf.tistory.com%2Fimage%2F277EC53454C39CD9353783){: width="300"}
 
 
 
@@ -177,7 +176,7 @@ __Boostrapping__ 이란 통계학 용어로, 전체 집합에서 무작위 복�
 
 ​	
 
-![boostrap](../assets/bagging1.PNG)
+![boostrap](/assets/bagging1.PNG)
 
 ​	
 
