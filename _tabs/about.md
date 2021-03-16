@@ -19,7 +19,7 @@ order: 4
 
 ​	
 
-:coffee: __I majored in `Electronic Engineering` and got interested in machine/deep learning while working on my undergraduate thesis__  
+:coffee: __I majored in `Electronic Engineering` and got interested in machine/deep learning while working on my Bachelor's thesis__  
 - [Application of Machine Learning for OFDM signal detection](https://github.com/ineed-coffee/Application-of-Machine-Learning-for-OFDM-signal-detection) 
   
 

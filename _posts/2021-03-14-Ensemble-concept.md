@@ -19,6 +19,7 @@ typora-root-url: ../
 - [2. Bagging](#idx4) 
 
 - [3.Boosting](#idx5)
+
 - [참고자료](#idx6)
 
   
@@ -176,7 +177,7 @@ __Boostrapping__ 이란 통계학 용어로, 전체 집합에서 무작위 복�
 
 ​	
 
-![boostrap](/assets/bagging1.PNG)
+![boostrap](/assets/bagging1.png)
 
 ​	
 
