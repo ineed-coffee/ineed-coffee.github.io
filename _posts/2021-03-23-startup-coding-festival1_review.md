@@ -65,3 +65,11 @@ ps. 혹시 5번 풀이 방법 코드말고 접근 방식이라도 간략히 알�
     <a href="mailto:leey93ssu@gmail.com">leey93ssu@gmail.com</a>
 </p>
 
+​	
+
+<p>
+    <img src="/assets/scofe1-1.png" alt="image1" width=550>
+    <img src="/assets/scofe1-2.PNG" alt="image2" width=550>
+</p>
+
+
