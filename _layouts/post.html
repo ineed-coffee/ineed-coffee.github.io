@@ -118,9 +118,13 @@ layout: default
 
     {% include post-nav.html %}
 
-    {% if site.disqus.comments and page.comments %}
-      {% include disqus.html %}
-    {% endif %}
+    <script src="https://utteranc.es/client.js"
+            repo="ineed-coffee/ineed-coffee.github.io"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
 
     </div> <!-- #post-extend-wrapper -->
 
