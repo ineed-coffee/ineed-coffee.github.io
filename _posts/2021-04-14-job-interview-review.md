@@ -65,6 +65,14 @@ __self-feedback__ : 0/5 아예 틀린 답변을 함. PCA 쪽에서도 차원의 
 
 ​	
 
+__Q__ : Over-fitting 의 대응 기법들을 설명해주세요.
+
+__A__ : 더 많은 데이터를 확보하는 것이 가장 이상적, 그 외에는 L1,L2 정칙화를 통한 weight-decay, model-capacity를 줄일 수 있는 bottleneck 기법, 해당 epoch 동안 일정 비율의 가중치를 고정시키는 drop-out, batch-normalization 등을 답변
+
+__self-feedback__ : 3.5/5 나머지는 아는 선에서 더듬지 않고 설명하였으나 batch-normalization의 경우 사실 이름만 알고 정확한 개념을 몰랐던 상태라 `batch-normalization이 CNN모델에서만 쓰이나요?` 라는 면접관님의 추가질문에 답변할 수 없었음.
+
+​		
+
 __그 외 기타 배운것들__ 
 
 - 내가 했던 프로젝트들을 설명하는 중간에 'XXX은 생성 모델이었나요?' 라는 질문을 주셨는데 이게 GAN 모델 말씀하시는줄 모르고 train-from-scratch 를 말씀하신걸로 알아들었다. '생성 모델' 이라는 말을 알고 있자.
