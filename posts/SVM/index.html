@@ -1,0 +1,243 @@
+<!DOCTYPE html><html lang="ko_KR" ><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta name="pv-cache-enabled" content="false"><meta name="generator" content="Jekyll v4.2.0" /><meta property="og:title" content="SVM 개념 정리 및 활용 (sklearn)" /><meta name="author" content="INEED COFFEE" /><meta property="og:locale" content="ko_KR" /><meta name="description" content=":mag: Index" /><meta property="og:description" content=":mag: Index" /><link rel="canonical" href="https://ineed-coffee.github.io/posts/SVM/" /><meta property="og:url" content="https://ineed-coffee.github.io/posts/SVM/" /><meta property="og:site_name" content="INEED COFFEE" /><meta property="og:type" content="article" /><meta property="article:published_time" content="2020-10-31T15:00:00+09:00" /><meta name="twitter:card" content="summary" /><meta property="twitter:title" content="SVM 개념 정리 및 활용 (sklearn)" /><meta name="google-site-verification" content="google_meta_tag_verification" /> <script type="application/ld+json"> {"datePublished":"2020-10-31T15:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://ineed-coffee.github.io/posts/SVM/"},"description":":mag: Index","url":"https://ineed-coffee.github.io/posts/SVM/","@type":"BlogPosting","author":{"@type":"Person","name":"INEED COFFEE"},"headline":"SVM 개념 정리 및 활용 (sklearn)","dateModified":"2021-03-10T22:46:03+09:00","@context":"https://schema.org"}</script><title>SVM 개념 정리 및 활용 (sklearn) | INEED COFFEE</title><link rel="shortcut icon" href="/assets/img/favicons/favicon.ico" type="image/x-icon"><link rel="icon" href="/assets/img/favicons/favicon.ico" type="image/x-icon"><link rel="apple-touch-icon" href="/assets/img/favicons/apple-icon.png"><link rel="apple-touch-icon" href="/assets/img/favicons/apple-icon-precomposed.png"><link rel="apple-touch-icon" sizes="57x57" href="/assets/img/favicons/apple-icon-57x57.png"><link rel="apple-touch-icon" sizes="60x60" href="/assets/img/favicons/apple-icon-60x60.png"><link rel="apple-touch-icon" sizes="72x72" href="/assets/img/favicons/apple-icon-72x72.png"><link rel="apple-touch-icon" sizes="76x76" href="/assets/img/favicons/apple-icon-76x76.png"><link rel="apple-touch-icon" sizes="114x114" href="/assets/img/favicons/apple-icon-114x114.png"><link rel="apple-touch-icon" sizes="120x120" href="/assets/img/favicons/apple-icon-120x120.png"><link rel="apple-touch-icon" sizes="144x144" href="/assets/img/favicons/apple-icon-144x144.png"><link rel="apple-touch-icon" sizes="152x152" href="/assets/img/favicons/apple-icon-152x152.png"><link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicons/apple-icon-180x180.png"><link rel="icon" type="image/png" sizes="192x192" href="/assets/img/favicons/android-icon-192x192.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicons/favicon-32x32.png"><link rel="icon" type="image/png" sizes="96x96" href="/assets/img/favicons/favicon-96x96.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicons/favicon-16x16.png"><link rel="manifest" href="/assets/img/favicons/manifest.json"><meta name='msapplication-config' content='/assets/img/favicons/browserconfig.xml'><meta name="msapplication-TileColor" content="#ffffff"><meta name="msapplication-TileImage" content="/assets/img/favicons/ms-icon-144x144.png"><meta name="theme-color" content="#ffffff"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://fonts.gstatic.com"><link rel="preconnect" href="https://www.google-analytics.com" crossorigin="use-credentials"><link rel="dns-prefetch" href="https://www.google-analytics.com"><link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><link rel="preconnect" href="cdn.jsdelivr.net"><link rel="dns-prefetch" href="cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha256-LA89z+k9fjgMKQ/kq4OO2Mrf8VltYml/VES+Rg0fh20=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous"><link rel="stylesheet" href="/assets/css/style.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.css"> <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script> <script defer src="https://cdn.jsdelivr.net/combine/npm/popper.js@1.15.0,npm/bootstrap@4/dist/js/bootstrap.min.js"></script> <script defer src="/assets/js/dist/post.min.js"></script> <script defer src="/app.js"></script> <script defer src="https://www.googletagmanager.com/gtag/js?id="></script> <script> document.addEventListener("DOMContentLoaded", function(event) { window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', ''); }); </script><body data-spy="scroll" data-target="#toc"><div id="sidebar" class="d-flex flex-column align-items-end">
+<div class="profile-wrapper text-center">
+<div id="avatar"> <a href="/" alt="avatar" class="mx-auto"> <img src="/assets/img/favicons/character.jpg" alt="avatar" onerror="this.style.display='none'"> </a>
+</div>
+<div class="site-title mt-3"> <a href="/">INEED COFFEE</a>
+</div>
+<div class="site-subtitle font-italic">Much more !</div>
+</div>
+<ul class="w-100">
+<li class="nav-item"> <a href="/" class="nav-link"> <i class="fa-fw fas fa-home ml-xl-3 mr-xl-3 unloaded"></i> <span>HOME</span> </a>
+</li>
+<li class="nav-item"> <a href="/categories/" class="nav-link"> <i class="fa-fw fas fa-stream ml-xl-3 mr-xl-3 unloaded"></i> <span>CATEGORIES</span> </a>
+</li>
+<li class="nav-item"> <a href="/tags/" class="nav-link"> <i class="fa-fw fas fa-tags ml-xl-3 mr-xl-3 unloaded"></i> <span>TAGS</span> </a>
+</li>
+<li class="nav-item"> <a href="/archives/" class="nav-link"> <i class="fa-fw fas fa-archive ml-xl-3 mr-xl-3 unloaded"></i> <span>ARCHIVES</span> </a>
+</li>
+<li class="nav-item"> <a href="/about/" class="nav-link"> <i class="fa-fw fas fa-info ml-xl-3 mr-xl-3 unloaded"></i> <span>ABOUT</span> </a>
+</li>
+</ul>
+<div class="sidebar-bottom mt-auto d-flex flex-wrap justify-content-center"> <a href="https://github.com/ineed-coffee" aria-label="github" class="order-3" target="_blank" rel="noopener"> <i class="fab fa-github-alt"></i> </a> <a href="javascript:location.href%20=%20'mailto:'%20+%20%5B'leey93ssu','gmail.com'%5D.join('@')" aria-label="email" class="order-4"> <i class="fas fa-envelope"></i> </a> <a href="/feed.xml" aria-label="rss" class="order-5"> <i class="fas fa-rss"></i> </a> <span class="icon-border order-2"></span> <span id="mode-toggle-wrapper" class="order-1"> <i class="mode-toggle fas fa-adjust"></i> <script type="text/javascript"> class ModeToggle { static get MODE_KEY() { return "mode"; } static get DARK_MODE() { return "dark"; } static get LIGHT_MODE() { return "light"; } constructor() { if (this.hasMode) { if (this.isDarkMode) { if (!this.isSysDarkPrefer) { this.setDark(); } } else { if (this.isSysDarkPrefer) { this.setLight(); } } } var self = this; /* always follow the system prefers */ this.sysDarkPrefers.addListener(function() { if (self.hasMode) { if (self.isDarkMode) { if (!self.isSysDarkPrefer) { self.setDark(); } } else { if (self.isSysDarkPrefer) { self.setLight(); } } self.clearMode(); } self.updateMermaid(); }); } /* constructor() */ setDark() { $('html').attr(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE); sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE); } setLight() { $('html').attr(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE); sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE); } clearMode() { $('html').removeAttr(ModeToggle.MODE_KEY); sessionStorage.removeItem(ModeToggle.MODE_KEY); } get sysDarkPrefers() { return window.matchMedia("(prefers-color-scheme: dark)"); } get isSysDarkPrefer() { return this.sysDarkPrefers.matches; } get isDarkMode() { return this.mode == ModeToggle.DARK_MODE; } get isLightMode() { return this.mode == ModeToggle.LIGHT_MODE; } get hasMode() { return this.mode != null; } get mode() { return sessionStorage.getItem(ModeToggle.MODE_KEY); } /* get the current mode on screen */ get modeStatus() { if (this.isDarkMode || (!this.hasMode && this.isSysDarkPrefer) ) { return ModeToggle.DARK_MODE; } else { return ModeToggle.LIGHT_MODE; } } updateMermaid() { if (typeof mermaid !== "undefined") { let expectedTheme = (this.modeStatus === ModeToggle.DARK_MODE? "dark" : "default"); let config = { theme: expectedTheme }; /* re-render the SVG › <https://github.com/mermaid-js/mermaid/issues/311#issuecomment-332557344> */ $(".mermaid").each(function() { let svgCode = $(this).prev().children().html(); $(this).removeAttr("data-processed"); $(this).html(svgCode); }); mermaid.initialize(config); mermaid.init(undefined, ".mermaid"); } } flipMode() { if (this.hasMode) { if (this.isSysDarkPrefer) { if (this.isLightMode) { this.clearMode(); } else { this.setLight(); } } else { if (this.isDarkMode) { this.clearMode(); } else { this.setDark(); } } } else { if (this.isSysDarkPrefer) { this.setLight(); } else { this.setDark(); } } this.updateMermaid(); } /* flipMode() */ } /* ModeToggle */ let toggle = new ModeToggle(); $(".mode-toggle").click(function() { toggle.flipMode(); }); </script> </span>
+</div>
+</div><div id="topbar-wrapper" class="row justify-content-center topbar-down"><div id="topbar" class="col-11 d-flex h-100 align-items-center justify-content-between"> <span id="breadcrumb"> <span> <a href="/"> Posts </a> </span> <span>SVM 개념 정리 및 활용 (sklearn)</span> </span> <i id="sidebar-trigger" class="fas fa-bars fa-fw"></i><div id="topbar-title"> Post</div>
+<i id="search-trigger" class="fas fa-search fa-fw"></i> <span id="search-wrapper" class="align-items-center"> <i class="fas fa-search fa-fw"></i> <input class="form-control" id="search-input" type="search" aria-label="search" placeholder="Search..."> <i class="fa fa-times-circle fa-fw" id="search-cleaner"></i> </span> <span id="search-cancel">Cancel</span>
+</div></div><div id="main-wrapper">
+<div id="main">
+<div class="row">
+<div id="post-wrapper" class="col-12 col-lg-11 col-xl-8"><div class="post pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4">
+<h1 data-toc-skip>SVM 개념 정리 및 활용 (sklearn)</h1>
+<div class="post-meta text-muted d-flex flex-column">
+<div> <span class="semi-bold"> INEED COFFEE </span> <span class="timeago " data-toggle="tooltip" data-placement="bottom" title="Sat, Oct 31, 2020, 3:00 PM +0900" prep="on"> Oct 31, 2020 <i class="unloaded">2020-10-31T15:00:00+09:00</i> </span>
+</div>
+<div> <span> <span class="timeago lastmod" data-toggle="tooltip" data-placement="bottom" title="Wed, Mar 10, 2021, 10:46 PM +0900" prefix="Updated "> Mar 10 <i class="unloaded">2021-03-10T22:46:03+09:00</i> </span> </span> <span class="readtime" data-toggle="tooltip" data-placement="bottom" title="2879 words">15 min</span>
+</div>
+</div>
+<div class="post-content">
+<h1 id="mag-index">
+<img class="emoji" title=":mag:" alt=":mag:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f50d.png" height="20" width="20"> Index</h1>
+<ul>
+<li><a href="#idx1">서포트 벡터 머신이란?</a></li>
+<li><a href="#idx2">서포트 벡터 머신의 구성 요소</a></li>
+<li><a href="#idx3">서포트 벡터 머신의 꽃 : 커널 트릭</a></li>
+<li><a href="#idx4">서포트 벡터 머신의 장단점 </a></li>
+<li><a href="#idx5">sklearn 패키지를 활용한 SVM</a></li>
+<li><a href="#idx6">참고자료</a></li>
+</ul>
+<hr>
+<h3 id="radio_button-서포트-벡터-머신이란-">
+<img class="emoji" title=":radio_button:" alt=":radio_button:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f518.png" height="20" width="20"> 서포트 벡터 머신이란? <a id="idx1"></a>
+</h3>
+<p>​</p>
+<p>서포트 벡터 머신(Support Vector Machine)이란 ,</p>
+<p><code class="language-plaintext highlighter-rouge">결정 경계선</code> 을 통해 데이터를 분류하는 머신러닝 알고리즘으로 나이브 베이즈 모델과 함께 간편하면서도 높은 성능을 자랑하는 머신러닝 알고리즘의 양대산맥이라 할 수 있는 데이터 분류 알고리즘이다.</p>
+<p>​</p>
+<p>주로 이진분류 문제에 많이 쓰이지만 <code class="language-plaintext highlighter-rouge">1 vs.all</code> , <code class="language-plaintext highlighter-rouge">1 vs. 1</code> , <code class="language-plaintext highlighter-rouge">some vs. some</code> 과 같은 다중분류로 확장 가능한 방법들도 존재한다.</p>
+<p>​</p>
+<hr>
+<h3 id="radio_button-서포트-벡터-머신의-구성-요소-">
+<img class="emoji" title=":radio_button:" alt=":radio_button:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f518.png" height="20" width="20"> 서포트 벡터 머신의 구성 요소 <a id="idx2"></a>
+</h3>
+<p>​</p>
+<p>서포트 벡터 머신을 구성하는 요소들의 용어부터 먼저 언급하자면 <strong>서포트 벡터</strong> , <strong>결정 경계</strong> , <strong>마진</strong> , <strong>비용</strong> , +α ( 커널 ) 로 이루어져있다.</p>
+<p>​</p>
+<p>먼저 서포트 벡터 머신은 <strong>결정 경계</strong> 라 불리는 <code class="language-plaintext highlighter-rouge">Decision Boundary</code> 를 통해 독립변수들이 이루는 벡터 공간을 둘로 분할하여 각 공간에 속한 데이터들을 다른 레이블로 분류하는 알고리즘이다.</p>
+<p>​</p>
+<p>알고리즘의 이름도 , 결정 경계라는 구성 요소명도 직관적이지 않아 이해가 힘들 수 있지만 말로 풀어 예시를 적용해보면 사실 생각보다 상당히 간단하다.</p>
+<p>​</p>
+<blockquote><p>나와 내 동생이 피자를 나눠먹는데 서로 좋아하는 토핑이 달라 피자를 반으로 나눠서 먹으려한다 생각해보자.</p></blockquote>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="/assets/SVM_pizza1.png" alt="피이짜"></p>
+<blockquote><p>그럼 우리가 어떤 심오한 수학적 계산을 머리속에 그리지 않도고 우리는 피자를 이렇게 나눌것이다.</p></blockquote>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="/assets/SVM_pizza2.png" alt="피이짜2"></p>
+<blockquote><p>좋아하는 토핑은 섞이지 않으며 어느 한쪽으로 치우지지 않도록 !</p></blockquote>
+<p>이것이 사실 서포트 벡터 머신의 핵심 개념이다. 위 그림에서 노란선으로 표시된 선이 서포트 벡터 머신을 구성하는 중요 요소 주 하나인 <strong>결정 경계</strong> 이고 서포트 벡터 머신은 최대한 어느 한 영역에 치우치지 않도록 결정 경계를 잘 설정하여 안정적인 분류를 하는 것이 목표인 알고리즘인 셈이다.</p>
+<p>​</p>
+<blockquote>
+<p>결정 경계는 결국 특성들의 선형식이며 2차원에서는 직선 , 3차원에서는 평명인 셈이다.</p>
+<p>ex) x₁ , x₂ , x₃ 의 특성을 가지는 데이터를 분류하는 결정 경계식은 α + β₁x₁ + β₂x₂ + β₃x₃ 꼴이다.</p>
+</blockquote>
+<p>​</p>
+<p>그렇다면 , 결정 경계를 잘 설정하기 위해서는 어떤 과정이 필요할까?</p>
+<p>​</p>
+<p>이 과정을 이해하는데 있어 등장하는 다음 요소가 <strong>서포트 벡터</strong> 와 <strong>마진</strong> 이다.</p>
+<p><code class="language-plaintext highlighter-rouge">서포트 벡터</code> 란 결정 경계와 근접해있는 데이터 포인트들을 의미하고 , <code class="language-plaintext highlighter-rouge">마진</code> 은 이러한 서포트 벡터들과</p>
+<p>결정 경계 사이 거리를 의미한다.</p>
+<p>​</p>
+<p>위 피자 예시에서의 서포트 벡터들과 마진은 다음과 같다.</p>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="/assets/pizzamargin.jpg" alt="피자마진"></p>
+<blockquote><p>자세한 설명은 생략하지만 알아두어야 할 점 : N차원 특성을 가지는 데이터에 대해 결정 경계를 만들기 위해서는 최소 N+1 개의 서포트 벡터가 필요하며 만들어지는 결정 경계는 항상 N-1 차원이다.</p></blockquote>
+<p>​</p>
+<p>결정 경계를 잘 설정한다는 것은 위의 <code class="language-plaintext highlighter-rouge">마진</code> 이 가장 크게 설정한다는 의미이다.</p>
+<p>이에 대한 정확한 표현은 서포트 벡터들과 직교성을 유지하는것을 의미하지만 수학적인 자세한 식은 정리에서 생략하도록 한다.</p>
+<p>​</p>
+<p>그렇다면 다음처럼 일반적인 결정 경계를 설정하기 힘든 경우에는 어떻게 할까?</p>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="/assets/svmcost1.jpg" alt="비용전"></p>
+<p>뒤에 나오는 설명을 보기 전에는 2가지 정도 방법을 예상해볼 수 있다.</p>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="/assets/svmcost2.jpg" alt="비용"></p>
+<ol>
+<li>선형성을 포기하고 비선형적인 결정 경계면을 설정하여 데이터를 정확히 분류한다.</li>
+<li>
+<strong>소수의 이상치 데이터를 수용하여</strong> 선형적인 결정 경계면을 설정하여 데이터를 분류한다.</li>
+</ol>
+<blockquote><p>과연 어느 방법이 새로운 데이터가 입력으로 들어왔을때 더 좋은 성능을 보일까?</p></blockquote>
+<p>​</p>
+<p>글자도 강조되어 있어 이미 답을 알지만 실제로 2번의 방법이 1번의 방법보다 훨씬 일반화 성능 측면에서 뛰어나다.</p>
+<p>1번의 경우 학습하는 과정에서 학습 데이터에 대해서는 아주 작거나 0에 가까운 오차율을 보이겠지만 실제 일반적인 데이터 입력에 대해서는 제대로 분류하지 못할 가능성이 커진다.</p>
+<p>반면 , 2번의 경우 마진을 계산하는 과정에서 <strong>이상치 몇 개</strong> 는 서포트 벡터 후보에서 제외하여 학습 데이터에 대해서 어느정도 오차는 보이나 새로운 입력에 대해서 꽤 우수하게 분류하는 모델을 만들 수 있어진다.</p>
+<p>이때 등장하는 개념이 바로 <strong>비용</strong> 이다.</p>
+<p>비용이란 , 하나의 이상 데이터에 대해서 얼마나 민감하게 반응하는지를 나타내는 지표로 비용이 작을수록 이상치 몇 개 정도에 대해서는 관대한 결정 경계를 설정하게 된다. 또 비용이 높다면 이상치 하나 하나에 민감한 결정 경계가 만들어진다.</p>
+<p>​</p>
+<p>앞서 언급한 구성 요소들을 토대로 서포트 벡터 머신의 생성과 동작 과정을 요약하자면 다음과 같다.</p>
+<ol>
+<li><p>모델의 비용을 설정한다.</p></li>
+<li><p>비용을 토대로 결정 경계를 설정할 서포트 벡터들을 선택한다.</p></li>
+<li><p>서포트 벡터들과 마진을 최대로 할 수 있는 선형식을 도출한다.</p></li>
+<li><p>새로운 입력에 대하여 3번의 선형식으로부터 데이터를 이진 분류한다.</p></li>
+</ol>
+<hr>
+<h3 id="radio_button-서포트-벡터-머신의-꽃--커널-트릭-">
+<img class="emoji" title=":radio_button:" alt=":radio_button:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f518.png" height="20" width="20"> 서포트 벡터 머신의 꽃 : 커널 트릭 <a id="idx3"></a>
+</h3>
+<p>​</p>
+<p>하지만 어느정도의 비용을 통해서도 위와 같이 선형적인 결정 경계선 , 혹은 결정 경계면에 의해 원활히 데이터 분류 작업이 이루어지진 않는 경우가 존재한다.</p>
+<p>다음과 같은 1차원 상의 데이터 벡터들을 분류하는 상황을 가정해보자.</p>
+<p>​</p>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="/assets/SVM_line1.png" alt="추가할 이미지"></p>
+<p>​</p>
+<p>이런 작업의 경우 선형 SVM 모델을 활용하고자 한다면 N-1 차원인 0차원 , 즉 하나의 점을 기준으로 데이터를 분류해야 하는데</p>
+<p>어느 지점을 기준으로 잡더라 하더라도 제대로된 분류가 가능한 지점이 존재하지 않는다.</p>
+<p>​</p>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="/assets/SVM_line2.png" alt="추가할 이미지"></p>
+<p>​</p>
+<p>이러한 선형 서포트 벡터 머신의 한계점을 극복하고자 도입된 방법이 바로 <strong>커널트릭</strong> 이다.</p>
+<p>커널 트릭이란 , N차원의 벡터 정보를 N+1 이상의 차원으로 확장하여 N차원 이상의 결정 경계를 통해 데이터를 분류하는 기법을 말한다.</p>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="/assets/svmkernel.jpg" alt="커널"></p>
+<p>원래의 개념으로는 차원을 증가시키는 맵핑함수를 통해 2차원 데이터는 3차원으로 , 4차원 데이터는 5차원으로 변환하여 결정 경계를 설정하는 개념이긴 하지만 실제로 많은 양의 데이터의 차원을 증가시키는 연산이 가볍지 않기 때문에 각 데이터 포인트에 대하여 허용 표준 편차를 참조할 수 있는 변형 형태의 맵핑함수를 통해 차원을 증가시키는 것과 동일한 효과를 가능하게 하는 방법으로 구현되어 있다. 이러한 커널 트릭의 종류에도 다양한 맵핑 함수가 있지만 가장 많이 쓰이는 대표적인 함수는 RBF 가우시안 함수이다.</p>
+<p>​</p>
+<p>이러한 커널트릭을 사용하여 모델을 생성하려면 하나의 구성요소가 더 추가되는데 바로 <strong>감마(gamma)</strong> 이다.</p>
+<p>​</p>
+<p>감마는 각 데이터에 적용되는 맵핑함수의 표준편차 값을 의미하며 이 값의 증감은 다음과 같은 의미를 가진다.</p>
+<ol>
+<li><strong>감마 값의 증가 - 데이터포인트 별 허용 표준편차가 작아짐 - 데이터의 차원 분리가 넓게 일어나며 실제 생성되는 결정 경계는 작고 구부러짐이 심해짐</strong></li>
+<li><strong>감마 값의 감소 - 데이터포인트 별 허용 표준편차가 커짐 - 데이터이 차원 분리가 좁게 일어나며 실제 생성되는 결정 경계가 비교적 크며 완만한 곡률을 보임</strong></li>
+</ol>
+<p>각 상황에 대해서 그림으로 표현하면 다음과 같이 이해할 수 있다. (조금 과장되게 묘사하면)</p>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="/assets/svmgamma.jpg" alt="감마"></p>
+<hr>
+<h3 id="radio_button-서포트-벡터-머신의-장단점-">
+<img class="emoji" title=":radio_button:" alt=":radio_button:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f518.png" height="20" width="20"> 서포트 벡터 머신의 장단점 <a id="idx4"></a>
+</h3>
+<p>​</p>
+<p>이와 같은 서포트 벡터 머신의 장단점에 대해 정리해보자면 다음과 같다.</p>
+<p>​</p>
+<blockquote><p><strong>Pros</strong></p></blockquote>
+<ul>
+<li><p>커널트릭 기법을 활용하여 N차원의 특성을 가진 데이터를 N차원 혹은 그 이상의 데이터로 맵핑하여 데이터 분류 작업이 가능하다.</p></li>
+<li><p>over-fitting , under-fitting 을 방지하기 위한 하이퍼 파라미터 종류가 적으며 직관적이다.</p></li>
+<li><p>학습 데이터 사이즈에 비해 성능이 우수하다. 데이터의 특성이 잘 구분되어 있는 성격의 데이터의 경우 작은 학습 데이터로도 딥러닝 모델만큼의 분류 성능을 기대할 수 있다.</p></li>
+</ul>
+<blockquote><p><strong>Cons</strong></p></blockquote>
+<ul>
+<li>데이터의 전처리가 다른 알고리즘에 비해 중요하다. 편향 정도가 심한 데이터의 경우 높은 마진을 기대하기 힘든 서포트 벡터를 통해 결정 경계가 만들어질 확률이 높다.</li>
+<li>선형 , 비선형 모델 모두 3차원 이상의 특성을 가지는 데이터에 대해 결정 경계를 시각화하기 힘들기 때문에 수학적인 동작 이해가 바탕이 되지 않은 상태에서는 SVM의 분류 결과를 이해하기 힘들다.</li>
+</ul>
+<hr>
+<h3 id="radio_button-sklearn-패키지를-활용한-svm-">
+<img class="emoji" title=":radio_button:" alt=":radio_button:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f518.png" height="20" width="20"> sklearn 패키지를 활용한 SVM <a id="idx5"></a>
+</h3>
+<hr>
+<h3 id="radio_button-참고자료-">
+<img class="emoji" title=":radio_button:" alt=":radio_button:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f518.png" height="20" width="20"> 참고자료 <a id="idx6"></a>
+</h3>
+<ul>
+<li><p><a href="https://wikibook.co.kr/mymlrev/">나의 첫 머신러닝/딥러닝</a> Chapter 4.3</p></li>
+<li>svm의 다중분류?</li>
+<li>커널트릭을 활용해도 어쨋든 선형 분리인건지? , 비선형 svm 모델이란?</li>
+<li>내부적으로 결정 경계에 해당하는 선형식의 계수가 어떻게 업데이트 되는지?</li>
+</ul>
+</div>
+<div class="post-tail-wrapper text-muted">
+<div class="post-meta mb-3"> <i class="far fa-folder-open fa-fw mr-1"></i> <a href="/categories/ml-dl/">ML/DL</a>, <a href="/categories/machine-learning/">Machine Learning</a>
+</div>
+<div class="post-tags"> <i class="fa fa-tags fa-fw mr-1"></i> <a href="/tags/svm/" class="post-tag no-text-decoration">svm</a> <a href="/tags/sklearn/" class="post-tag no-text-decoration">sklearn</a> <a href="/tags/python/" class="post-tag no-text-decoration">python</a>
+</div>
+<div class="post-tail-bottom d-flex justify-content-between align-items-center mt-3 pt-5 pb-2">
+<div class="license-wrapper"> This post is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> by the author.</div>
+<div class="share-wrapper"> <span class="share-label text-muted mr-1">Share</span> <span class="share-icons"> <a href="https://twitter.com/intent/tweet?text=SVM%20%EA%B0%9C%EB%85%90%20%EC%A0%95%EB%A6%AC%20%EB%B0%8F%20%ED%99%9C%EC%9A%A9%20(sklearn)%20-%20INEED%20COFFEE&amp;url=https://ineed-coffee.github.io/posts/SVM/" data-toggle="tooltip" data-placement="top" title="Twitter" target="_blank" rel="noopener" aria-label="Twitter"> <i class="fa-fw fab fa-twitter"></i> </a> <a href="https://www.facebook.com/sharer/sharer.php?title=SVM%20%EA%B0%9C%EB%85%90%20%EC%A0%95%EB%A6%AC%20%EB%B0%8F%20%ED%99%9C%EC%9A%A9%20(sklearn)%20-%20INEED%20COFFEE&amp;u=https://ineed-coffee.github.io/posts/SVM/" data-toggle="tooltip" data-placement="top" title="Facebook" target="_blank" rel="noopener" aria-label="Facebook"> <i class="fa-fw fab fa-facebook-square"></i> </a> <a href="https://telegram.me/share?text=SVM%20%EA%B0%9C%EB%85%90%20%EC%A0%95%EB%A6%AC%20%EB%B0%8F%20%ED%99%9C%EC%9A%A9%20(sklearn)%20-%20INEED%20COFFEE&amp;url=https://ineed-coffee.github.io/posts/SVM/" data-toggle="tooltip" data-placement="top" title="Telegram" target="_blank" rel="noopener" aria-label="Telegram"> <i class="fa-fw fab fa-telegram"></i> </a> <i class="fa-fw fas fa-link small" onclick="copyLink()" data-toggle="tooltip" data-placement="top" title="Copy link"></i> </span>
+</div>
+</div>
+</div>
+</div></div>
+<div id="panel-wrapper" class="col-xl-3 pl-2 text-muted topbar-down">
+<div class="access">
+<div id="access-lastmod" class="post"> <span>Recent Update</span><ul class="post-content pl-0 pb-1 ml-1 mt-2">
+<li><a href="/posts/CSC321-study-log/">CSC321 스터디 진행 사항 (Toronto Univ. , Roger Grosse )</a></li>
+<li><a href="/posts/CSC321-lec13.6/">【Lecture 13.6】Object Detection YOLO v1</a></li>
+<li><a href="/posts/CSC321-lec13.5-part1/">【Lecture 13.5】Object Detection Faster R-CNN part1</a></li>
+<li><a href="/posts/CSC321-sc.2/">【Special Course 2】Implementing Inception module using keras Functional API</a></li>
+<li><a href="/posts/CSC321-sc.1/">【Special Course 1】DNN practice &amp; keras overview from Colab</a></li>
+</ul>
+</div>
+<div id="access-tags"> <span>Trending Tags</span><div class="d-flex flex-wrap mt-3 mb-1 mr-3"> <a class="post-tag" href="/tags/deep-learning/">deep learning</a> <a class="post-tag" href="/tags/csc321/">csc321</a> <a class="post-tag" href="/tags/cnn/">cnn</a> <a class="post-tag" href="/tags/colab/">colab</a> <a class="post-tag" href="/tags/object-detection/">object detection</a> <a class="post-tag" href="/tags/python/">python</a> <a class="post-tag" href="/tags/sklearn/">sklearn</a> <a class="post-tag" href="/tags/git/">git</a> <a class="post-tag" href="/tags/github/">github</a> <a class="post-tag" href="/tags/machine-learning/">machine learning</a>
+</div>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.js"></script><div id="toc-wrapper" class="pl-0 pr-4 mb-5"> <span class="pl-3 pt-2 mb-2">Contents</span><nav id="toc" data-toggle="toc"></nav>
+</div>
+</div>
+</div>
+<div class="row"><div class="col-12 col-lg-11 col-xl-8"><div id="post-extend-wrapper" class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4">
+<div id="related-posts" class="mt-5 mb-2 mb-sm-4">
+<h3 class="pt-2 mt-1 mb-4 ml-1" data-toc-skip>Further Reading</h3>
+<div class="card-deck mb-4">
+<div class="card"> <a href="/posts/DecisionTree/"><div class="card-body"> <span class="timeago small"> Oct 26, 2020 <i class="unloaded">2020-10-26T15:00:00+09:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>DecisionTree 개념 정리 및 활용 (sklearn)</h3>
+<div class="text-muted small"><p> <img class="emoji" title=":mag:" alt=":mag:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f50d.png" height="20" width="20"> Index 의사결정나무(Decision Tree)는 뭘까? 의사결정나무의 철학: Information Gain 의사결정나무의 종류 : Type of Tree 의사결정나무의 학습과정: Learning Process sklearn 라이브러리를 활용한 의사 결정나무 참고자료 <img class="emoji" title=":radio_button:" alt=":radio_button:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f518.png" height="20" width="20"> 의사결정나무(...</p></div>
+</div></a>
+</div>
+<div class="card"> <a href="/posts/RandomForest/"><div class="card-body"> <span class="timeago small"> Oct 26, 2020 <i class="unloaded">2020-10-26T15:00:00+09:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>RandomForest 개념 정리 및 활용 (sklearn)</h3>
+<div class="text-muted small"><p> <img class="emoji" title=":mag:" alt=":mag:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f50d.png" height="20" width="20"> Index 랜덤 포레스트(Random Forest)는 무엇일까? 랜덤 포레스트의 핵심 : bagging (bootstrap + aggregate) 랜덤 포레스트의 중요 매개변수 sklearn 라이브러리를 활용한 랜덤 포레스트 Reference <img class="emoji" title=":radio_button:" alt=":radio_button:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f518.png" height="20" width="20"> 랜덤 포레스트(Random Forest)는 ...</p></div>
+</div></a>
+</div>
+<div class="card"> <a href="/posts/KNN/"><div class="card-body"> <span class="timeago small"> Oct 27, 2020 <i class="unloaded">2020-10-27T15:00:00+09:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>KNN 개념 정리 및 활용 (sklearn)</h3>
+<div class="text-muted small"><p> <img class="emoji" title=":mag:" alt=":mag:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f50d.png" height="20" width="20"> Index k-최근접 이웃 알고리즘 이란? (KNN) k-최근접 이웃 알고리즘의 동작 원리 k-최근접 이웃 알고리즘의 장단점 sklearn 패키지를 활용한 KNN 참고자료 <img class="emoji" title=":radio_button:" alt=":radio_button:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f518.png" height="20" width="20"> k-최근접 이웃 알고리즘 이란? (KNN) ...</p></div>
+</div></a>
+</div>
+</div>
+</div>
+<div class="post-navigation d-flex justify-content-between"> <a href="/posts/markdown-tips/" class="btn btn-outline-primary" prompt="Older"><p>마크다운 꿀팁 정리</p></a> <a href="/posts/CSC321-study-log/" class="btn btn-outline-primary" prompt="Newer"><p>CSC321 스터디 진행 사항 (Toronto Univ. , Roger Grosse )</p></a>
+</div>
+<script src="https://utteranc.es/client.js" repo="ineed-coffee/ineed-coffee.github.io" issue-term="pathname" theme="github-light" crossorigin="anonymous" async> </script>
+</div></div></div>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script> <script type="text/javascript"> const imgs = document.querySelectorAll('.post-content img'); const observer = lozad(imgs); observer.observe(); </script><footer class="d-flex w-100 justify-content-center"><div class="d-flex justify-content-between align-items-center">
+<div class="footer-left"><p class="mb-0"> © 2021 <a href="https://github.com/ineed-coffee">INEED COFFEE</a>. <span data-toggle="tooltip" data-placement="top" title="Except where otherwise noted, the blog posts on this site are licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author."> Some rights reserved. </span></p></div>
+<div class="footer-right"><p class="mb-0"> Powered by <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a> with <a href="https://github.com/cotes2020/jekyll-theme-chirpy" target="_blank" rel="noopener">Chirpy</a> theme.</p></div>
+</div></footer>
+</div>
+<div id="search-result-wrapper" class="d-flex justify-content-center unloaded"><div class="col-12 col-sm-11 post-content">
+<div id="search-hints">
+<h4 class="text-muted mb-4">Trending Tags</h4>
+<a class="post-tag" href="/tags/deep-learning/">deep learning</a> <a class="post-tag" href="/tags/csc321/">csc321</a> <a class="post-tag" href="/tags/cnn/">cnn</a> <a class="post-tag" href="/tags/colab/">colab</a> <a class="post-tag" href="/tags/object-detection/">object detection</a> <a class="post-tag" href="/tags/python/">python</a> <a class="post-tag" href="/tags/sklearn/">sklearn</a> <a class="post-tag" href="/tags/git/">git</a> <a class="post-tag" href="/tags/github/">github</a> <a class="post-tag" href="/tags/machine-learning/">machine learning</a>
+</div>
+<div id="search-results" class="d-flex flex-wrap justify-content-center text-muted mt-3"></div>
+</div></div>
+</div><div id="mask"></div><a id="back-to-top" href="#" aria-label="back-to-top" class="btn btn-lg btn-box-shadow" role="button"> <i class="fas fa-angle-up"></i> </a> <script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@1.7.3/dest/simple-jekyll-search.min.js"></script> <script> SimpleJekyllSearch({ searchInput: document.getElementById('search-input'), resultsContainer: document.getElementById('search-results'), json: '/assets/js/data/search.json', searchResultTemplate: '<div class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-lg-4 pr-lg-4 pl-xl-0 pr-xl-0"> <a href="https://ineed-coffee.github.io{url}">{title}</a><div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1"> {categories} {tags}</div><p>{snippet}</p></div>', noResultsText: '<p class="mt-5">Oops! No result founds.</p>', templateMiddleware: function(prop, value, template) { if (prop === 'categories') { if (value === '') { return `${value}`; } else { return `<div class="mr-sm-4"><i class="far fa-folder fa-fw"></i>${value}</div>`; } } if (prop === 'tags') { if (value === '') { return `${value}`; } else { return `<div><i class="fa fa-tag fa-fw"></i>${value}</div>`; } } } }); </script>

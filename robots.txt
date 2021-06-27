@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /norobots/
+Sitemap: https://ineed-coffee.github.io/sitemap.xml

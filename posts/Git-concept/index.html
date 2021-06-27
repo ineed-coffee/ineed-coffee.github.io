@@ -1,0 +1,176 @@
+<!DOCTYPE html><html lang="ko_KR" ><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta name="pv-cache-enabled" content="false"><meta name="generator" content="Jekyll v4.2.0" /><meta property="og:title" content="Git&amp;Github 개념 정리" /><meta name="author" content="INEED COFFEE" /><meta property="og:locale" content="ko_KR" /><meta name="description" content="Git&amp;Github 개념 정리" /><meta property="og:description" content="Git&amp;Github 개념 정리" /><link rel="canonical" href="https://ineed-coffee.github.io/posts/Git-concept/" /><meta property="og:url" content="https://ineed-coffee.github.io/posts/Git-concept/" /><meta property="og:site_name" content="INEED COFFEE" /><meta property="og:type" content="article" /><meta property="article:published_time" content="2020-09-20T15:00:00+09:00" /><meta name="twitter:card" content="summary" /><meta property="twitter:title" content="Git&amp;Github 개념 정리" /><meta name="google-site-verification" content="google_meta_tag_verification" /> <script type="application/ld+json"> {"datePublished":"2020-09-20T15:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://ineed-coffee.github.io/posts/Git-concept/"},"description":"Git&amp;Github 개념 정리","url":"https://ineed-coffee.github.io/posts/Git-concept/","@type":"BlogPosting","author":{"@type":"Person","name":"INEED COFFEE"},"headline":"Git&amp;Github 개념 정리","dateModified":"2021-03-11T15:56:37+09:00","@context":"https://schema.org"}</script><title>Git&Github 개념 정리 | INEED COFFEE</title><link rel="shortcut icon" href="/assets/img/favicons/favicon.ico" type="image/x-icon"><link rel="icon" href="/assets/img/favicons/favicon.ico" type="image/x-icon"><link rel="apple-touch-icon" href="/assets/img/favicons/apple-icon.png"><link rel="apple-touch-icon" href="/assets/img/favicons/apple-icon-precomposed.png"><link rel="apple-touch-icon" sizes="57x57" href="/assets/img/favicons/apple-icon-57x57.png"><link rel="apple-touch-icon" sizes="60x60" href="/assets/img/favicons/apple-icon-60x60.png"><link rel="apple-touch-icon" sizes="72x72" href="/assets/img/favicons/apple-icon-72x72.png"><link rel="apple-touch-icon" sizes="76x76" href="/assets/img/favicons/apple-icon-76x76.png"><link rel="apple-touch-icon" sizes="114x114" href="/assets/img/favicons/apple-icon-114x114.png"><link rel="apple-touch-icon" sizes="120x120" href="/assets/img/favicons/apple-icon-120x120.png"><link rel="apple-touch-icon" sizes="144x144" href="/assets/img/favicons/apple-icon-144x144.png"><link rel="apple-touch-icon" sizes="152x152" href="/assets/img/favicons/apple-icon-152x152.png"><link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicons/apple-icon-180x180.png"><link rel="icon" type="image/png" sizes="192x192" href="/assets/img/favicons/android-icon-192x192.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicons/favicon-32x32.png"><link rel="icon" type="image/png" sizes="96x96" href="/assets/img/favicons/favicon-96x96.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicons/favicon-16x16.png"><link rel="manifest" href="/assets/img/favicons/manifest.json"><meta name='msapplication-config' content='/assets/img/favicons/browserconfig.xml'><meta name="msapplication-TileColor" content="#ffffff"><meta name="msapplication-TileImage" content="/assets/img/favicons/ms-icon-144x144.png"><meta name="theme-color" content="#ffffff"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://fonts.gstatic.com"><link rel="preconnect" href="https://www.google-analytics.com" crossorigin="use-credentials"><link rel="dns-prefetch" href="https://www.google-analytics.com"><link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><link rel="preconnect" href="cdn.jsdelivr.net"><link rel="dns-prefetch" href="cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha256-LA89z+k9fjgMKQ/kq4OO2Mrf8VltYml/VES+Rg0fh20=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous"><link rel="stylesheet" href="/assets/css/style.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.css"> <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script> <script defer src="https://cdn.jsdelivr.net/combine/npm/popper.js@1.15.0,npm/bootstrap@4/dist/js/bootstrap.min.js"></script> <script defer src="/assets/js/dist/post.min.js"></script> <script defer src="/app.js"></script> <script defer src="https://www.googletagmanager.com/gtag/js?id="></script> <script> document.addEventListener("DOMContentLoaded", function(event) { window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', ''); }); </script><body data-spy="scroll" data-target="#toc"><div id="sidebar" class="d-flex flex-column align-items-end">
+<div class="profile-wrapper text-center">
+<div id="avatar"> <a href="/" alt="avatar" class="mx-auto"> <img src="/assets/img/favicons/character.jpg" alt="avatar" onerror="this.style.display='none'"> </a>
+</div>
+<div class="site-title mt-3"> <a href="/">INEED COFFEE</a>
+</div>
+<div class="site-subtitle font-italic">Much more !</div>
+</div>
+<ul class="w-100">
+<li class="nav-item"> <a href="/" class="nav-link"> <i class="fa-fw fas fa-home ml-xl-3 mr-xl-3 unloaded"></i> <span>HOME</span> </a>
+</li>
+<li class="nav-item"> <a href="/categories/" class="nav-link"> <i class="fa-fw fas fa-stream ml-xl-3 mr-xl-3 unloaded"></i> <span>CATEGORIES</span> </a>
+</li>
+<li class="nav-item"> <a href="/tags/" class="nav-link"> <i class="fa-fw fas fa-tags ml-xl-3 mr-xl-3 unloaded"></i> <span>TAGS</span> </a>
+</li>
+<li class="nav-item"> <a href="/archives/" class="nav-link"> <i class="fa-fw fas fa-archive ml-xl-3 mr-xl-3 unloaded"></i> <span>ARCHIVES</span> </a>
+</li>
+<li class="nav-item"> <a href="/about/" class="nav-link"> <i class="fa-fw fas fa-info ml-xl-3 mr-xl-3 unloaded"></i> <span>ABOUT</span> </a>
+</li>
+</ul>
+<div class="sidebar-bottom mt-auto d-flex flex-wrap justify-content-center"> <a href="https://github.com/ineed-coffee" aria-label="github" class="order-3" target="_blank" rel="noopener"> <i class="fab fa-github-alt"></i> </a> <a href="javascript:location.href%20=%20'mailto:'%20+%20%5B'leey93ssu','gmail.com'%5D.join('@')" aria-label="email" class="order-4"> <i class="fas fa-envelope"></i> </a> <a href="/feed.xml" aria-label="rss" class="order-5"> <i class="fas fa-rss"></i> </a> <span class="icon-border order-2"></span> <span id="mode-toggle-wrapper" class="order-1"> <i class="mode-toggle fas fa-adjust"></i> <script type="text/javascript"> class ModeToggle { static get MODE_KEY() { return "mode"; } static get DARK_MODE() { return "dark"; } static get LIGHT_MODE() { return "light"; } constructor() { if (this.hasMode) { if (this.isDarkMode) { if (!this.isSysDarkPrefer) { this.setDark(); } } else { if (this.isSysDarkPrefer) { this.setLight(); } } } var self = this; /* always follow the system prefers */ this.sysDarkPrefers.addListener(function() { if (self.hasMode) { if (self.isDarkMode) { if (!self.isSysDarkPrefer) { self.setDark(); } } else { if (self.isSysDarkPrefer) { self.setLight(); } } self.clearMode(); } self.updateMermaid(); }); } /* constructor() */ setDark() { $('html').attr(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE); sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE); } setLight() { $('html').attr(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE); sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE); } clearMode() { $('html').removeAttr(ModeToggle.MODE_KEY); sessionStorage.removeItem(ModeToggle.MODE_KEY); } get sysDarkPrefers() { return window.matchMedia("(prefers-color-scheme: dark)"); } get isSysDarkPrefer() { return this.sysDarkPrefers.matches; } get isDarkMode() { return this.mode == ModeToggle.DARK_MODE; } get isLightMode() { return this.mode == ModeToggle.LIGHT_MODE; } get hasMode() { return this.mode != null; } get mode() { return sessionStorage.getItem(ModeToggle.MODE_KEY); } /* get the current mode on screen */ get modeStatus() { if (this.isDarkMode || (!this.hasMode && this.isSysDarkPrefer) ) { return ModeToggle.DARK_MODE; } else { return ModeToggle.LIGHT_MODE; } } updateMermaid() { if (typeof mermaid !== "undefined") { let expectedTheme = (this.modeStatus === ModeToggle.DARK_MODE? "dark" : "default"); let config = { theme: expectedTheme }; /* re-render the SVG › <https://github.com/mermaid-js/mermaid/issues/311#issuecomment-332557344> */ $(".mermaid").each(function() { let svgCode = $(this).prev().children().html(); $(this).removeAttr("data-processed"); $(this).html(svgCode); }); mermaid.initialize(config); mermaid.init(undefined, ".mermaid"); } } flipMode() { if (this.hasMode) { if (this.isSysDarkPrefer) { if (this.isLightMode) { this.clearMode(); } else { this.setLight(); } } else { if (this.isDarkMode) { this.clearMode(); } else { this.setDark(); } } } else { if (this.isSysDarkPrefer) { this.setLight(); } else { this.setDark(); } } this.updateMermaid(); } /* flipMode() */ } /* ModeToggle */ let toggle = new ModeToggle(); $(".mode-toggle").click(function() { toggle.flipMode(); }); </script> </span>
+</div>
+</div><div id="topbar-wrapper" class="row justify-content-center topbar-down"><div id="topbar" class="col-11 d-flex h-100 align-items-center justify-content-between"> <span id="breadcrumb"> <span> <a href="/"> Posts </a> </span> <span>Git&amp;Github 개념 정리</span> </span> <i id="sidebar-trigger" class="fas fa-bars fa-fw"></i><div id="topbar-title"> Post</div>
+<i id="search-trigger" class="fas fa-search fa-fw"></i> <span id="search-wrapper" class="align-items-center"> <i class="fas fa-search fa-fw"></i> <input class="form-control" id="search-input" type="search" aria-label="search" placeholder="Search..."> <i class="fa fa-times-circle fa-fw" id="search-cleaner"></i> </span> <span id="search-cancel">Cancel</span>
+</div></div><div id="main-wrapper">
+<div id="main">
+<div class="row">
+<div id="post-wrapper" class="col-12 col-lg-11 col-xl-8"><div class="post pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4">
+<h1 data-toc-skip>Git&amp;Github 개념 정리</h1>
+<div class="post-meta text-muted d-flex flex-column">
+<div> <span class="semi-bold"> INEED COFFEE </span> <span class="timeago " data-toggle="tooltip" data-placement="bottom" title="Sun, Sep 20, 2020, 3:00 PM +0900" prep="on"> Sep 20, 2020 <i class="unloaded">2020-09-20T15:00:00+09:00</i> </span>
+</div>
+<div> <span> <span class="timeago lastmod" data-toggle="tooltip" data-placement="bottom" title="Thu, Mar 11, 2021, 3:56 PM +0900" prefix="Updated "> Mar 11 <i class="unloaded">2021-03-11T15:56:37+09:00</i> </span> </span> <span class="readtime" data-toggle="tooltip" data-placement="bottom" title="2029 words">11 min</span>
+</div>
+</div>
+<div class="post-content">
+<h1 id="gitgithub-개념-정리">Git&amp;Github 개념 정리</h1>
+<hr>
+<h3 id="arrow_right-scm--vcs">
+<img class="emoji" title=":arrow_right:" alt=":arrow_right:" src="https://github.githubassets.com/images/icons/emoji/unicode/27a1.png" height="20" width="20"> SCM &amp; VCS</h3>
+<ul>
+<li>Source Code Management(SCM): 코드 관리 도구</li>
+<li>Version Control System(VCS): 버전 관리 시스템</li>
+</ul>
+<blockquote><p>즉 버전 관리를 한다는것은 코드의 특정 시점을 사진 찍듯이 스냅샷을 찍어 이 정보를 관리하는것</p></blockquote>
+<hr>
+<h3 id="arrow_right-git-의-역할-4가지-측면">
+<img class="emoji" title=":arrow_right:" alt=":arrow_right:" src="https://github.githubassets.com/images/icons/emoji/unicode/27a1.png" height="20" width="20"> Git 의 역할 (4가지 측면)</h3>
+<h4 id="radio_button-1-코드-관리-도구">
+<img class="emoji" title=":radio_button:" alt=":radio_button:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f518.png" height="20" width="20"> 1. 코드 관리 도구</h4>
+<blockquote><p>git 은 코드를 <code class="language-plaintext highlighter-rouge">폴더 단위</code> 로 관리하며 특정 시점의 폴더 상태를 커밋으로 저장하여 로그로 기록한다.</p></blockquote>
+<p>처음엔 저 말이 잘 이해가 가지 않았는데 <strong>효율</strong> , <strong>스냅샷</strong> 2가지 키워드를 통해 이해하게 되었다.</p>
+<p>파일 하나만으로 간단하게 예를 생각해보자.</p>
+<p><code class="language-plaintext highlighter-rouge">'homework.txt'</code></p>
+<p>위의 파일을 만들고 수정에 수정을 거듭하며 최종 파일을 만드려한다. 파일 내용이 조금씩 수정될 때 단순히 덮어쓸 수도 있겠지만 수정한 내용이 틀렸거나 갑자기 다시 이전에 작성했던 내용 일부가 필요하거나 등의 이유로 보통 비슷한 이름의 새 파일을 만들것이다.</p>
+<p>ex ) <code class="language-plaintext highlighter-rouge">'homework_fix.txt'</code></p>
+<p>이런식으로 10번의 수정을 했다고 생각하자. 그럼 자연스레 내 폴더에는 내용도, 제목도 비스무리 한 파일들이 10개가 생기게된다. 이런 방식이 보통의 경우 크게 문제가 되지는 않지만 저렇게 10번의 수정을 거치게 되는 파일이 수백 , 수천 급으로 늘어난 경우를 생각해보자.</p>
+<p>그럼 모든 파일들이 뒤죽박죽의 파일명으로 섞이고 용량도 10배 이상의 뻥튀기 결과를 피하기 힘들것이다.</p>
+<p>깃은 저런 상황에서 파일을 다음과 같이 관리한다.</p>
+<p><code class="language-plaintext highlighter-rouge">homework.txt</code> 라는 파일의 내용 일부가 수정이 되었을 때, <strong>그 수정된 부분만</strong> 따로 저장하며 어떤 부분에 대한 수정이였는지 사용자가 직접 작성한 <strong>메세지</strong> 와 함께 로그 파일로 저장한다. 결과적으로<code class="language-plaintext highlighter-rouge">homework.txt</code> 라는 파일은 1개만 존재한 상태로 변경사항 정보를 저장한 <strong>+α</strong> 만 추가적으로 생기는 것이다.</p>
+<blockquote><p>수정이 많아질수록 이러한 저장 방식은 메모리 측면에 있어 엄청난 <strong>효율</strong> 을 보여줄 수 있는 것이다.</p></blockquote>
+<p>또다른 키워드인 <code class="language-plaintext highlighter-rouge">'스냅샷'</code> 에 대한 설명은 다음과 같이 이해할 수 있다.</p>
+<p>위와 비슷하게 10개의 파일들 <code class="language-plaintext highlighter-rouge">1.txt~10.txt</code> 이 있고 이들 모두가 10번씩 수정되어 여러 파생된 이름으로 각 파일이 10개의 버전을 가지게 된 상태를 생각해보자.</p>
+<p><code class="language-plaintext highlighter-rouge">ex) 1_fix.txt , 1_final.txt , 1_part.txt , 1_final_final.txt </code></p>
+<p>이 작업을 오로지 혼자 한 작업이였다면 각 버전들의 이름을 본인이 알아보기 수월하게 깔끔히 정리했을지 모르겠지만 대게의 경우 혼자 수정한 경우라 하더라도 각각의 파일들이 어느 부분이 변경된 파일들인지 , 어느 시점에 저장했고 그 저장 시점에 다른 파일들은 어떤 상태였는지에 대한 정보를 본인 기억력 말고는 알 수 있는 방법이 없다. 게다가 이를 여러명이 작업했다고 생각하면 훨씬 끔찍해진다.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr>
+<td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td>
+<td class="rouge-code"><pre>me : OOO님 그 목요일에 수정 부탁드린거 올려주셨나요?
+OOO : 네 방금 업로드 했어요!
+me : 어... 그 파일이 여러개인데 혹시 어떤거인가요?
+OOO : 어? 어.. final_real.py 였나? 아 아니다 real_real_final.py 였다
+</pre></td>
+</tr></tbody></table></code></div></div>
+<p>git 은 위에서 설명한 파일의 변경사항을 저장할 때 old 버전과 new 버전의 차이 정보를 동시에 저장하여 관리하고 이때 메세지도 함께 저장한다. 사용자는 특정 시점에 작업했던 파일의 내용을 원하면 그때 작성했던 메세지를 찾아가면 어느부분이 어떻게 수정되었는지 확인할 수 있고 그 상태로 되돌리는것도 가능하다.</p>
+<p><strong>ex)</strong></p>
+<p>​</p>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="/assets/git_diff.PNG" alt="변경 사항"></p>
+<p>​</p>
+<p><code class="language-plaintext highlighter-rouge">-</code> : 이전의 내용 , <code class="language-plaintext highlighter-rouge">+</code> : 저장된 수정 내용</p>
+<hr>
+<h4 id="radio_button-2-코드-저장-도구">
+<img class="emoji" title=":radio_button:" alt=":radio_button:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f518.png" height="20" width="20"> 2. 코드 저장 도구</h4>
+<p><code class="language-plaintext highlighter-rouge">1.</code> 에서 확인하였던 <strong>관리 도구</strong> 로서 git의 역할 덕에 git은 코드를 저장함에 있어도 유용하다.</p>
+<p>코드들이 git으로 관리된 상태가 아니라면 물리적으로 작업 환경이 바뀌면 (다른 PC , 노트북으로 작업을 해야하는경우) , 이전에 하던 작업을 이어서 하기 위한 방법은 <code class="language-plaintext highlighter-rouge">N 드라이브</code> , <code class="language-plaintext highlighter-rouge">Google 드라이브</code> 와 같은 클라우드 서비스에 코드들을 업로드 / 다운로드를 하며 작업하는 것이다.</p>
+<p>그렇게 되면 위에서도 언급했든 메모리 측면에서 비효율적이며 코드들의 변경 기록들을 알기 힘들다.</p>
+<p>하지만 git 으로 관리되는 코드들은 변경사항 정보를 가지고 있는 <code class="language-plaintext highlighter-rouge">커밋</code> 들만 받으면 되기 때문에 상대적으로 가볍고 세부 변경 사항들을 지속적으로 확인하며 작업할 수 있다.</p>
+<p>이러한 git 파일들을 github 이라는 저장 서비스에서 로컬 저장소와 같이 쉽게 업로드 / 다운로드 할 수 있다. 이를 로컬 저장소와 구분하기 위해 <code class="language-plaintext highlighter-rouge">원격 저장소</code> 라는 이름으로 부르는데 로컬 저장소 쪽에서 원격 저장소 쪽으로 업로드하는 작업을 <strong>push</strong> , 반대로 다운로드 하는 작업을 <strong>pull</strong> 이라고 한다.</p>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="https://media.vlpt.us/post-images/devzunky/f2cbc030-e750-11e9-923d-59d3f2efc852/Git-PUSH-pULL.png" alt="push pull 그림"></p>
+<hr>
+<h4 id="radio_button-3-코드-협업-도구">
+<img class="emoji" title=":radio_button:" alt=":radio_button:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f518.png" height="20" width="20"> 3. 코드 협업 도구</h4>
+<p><code class="language-plaintext highlighter-rouge">1.</code> , <code class="language-plaintext highlighter-rouge">2.</code> 에서 확인한 장점 만으로도 git 은 충분히 코딩 환경에서 크게 이점으로 다가온다. 하지만 git의 가장 큰 장점은 이런 코드 관리와 저장의 작업을 여럿이, 남들과 함께하기에 정말 좋다는 것이다. 협업을 통한 개발을 크게 3가지 모델로 구분할 수 있는데</p>
+<p><strong>1. Push &amp; Pull</strong></p>
+<blockquote><p>하나의 테스크가 끝나기 전에 다른 테스크를 이어날 수 없는 ‘동기 작업’ 의 경우 주로 활용하는 모델로 하나의 분기를 통해 푸쉬와 풀 작업이 차례대로 번걸아가며 수행된다. ex) 끝말잇기</p></blockquote>
+<ul><li>규모가 작거나 작업이 여러분류로 나뉘지 않는 경우 , 혹은 하나의 분기로 여러명이 작업하는 경우가 있다면 활용하는 모델이다. 많이 쓰이진 않는다.</li></ul>
+<p><strong>2. Branch &amp; Pull Request</strong></p>
+<blockquote><p>가장 표준적인 협업 모델로, 항상 배포에 문제없는 master 분기 하위로 많은 분기를 통해 개발과 테스트를 거치고 pull request를 통해 상위 분기와 병합하여 작업을 진행하는 모델이다.</p></blockquote>
+<ul><li>가장 많이 쓰이고 있는 모델로 아래의 그림은 <a href="https://woowabros.github.io/experience/2017/10/30/baemin-mobile-git-branch-strategy.html">우아한형제들 기술 블로그</a>에서 가져온 이런 Branch &amp; Pull Request 모델 활용 git - flow 그림이다.</li></ul>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="https://woowabros.github.io/img/2017-10-30/git-flow_overall_graph.png" alt="git-flow"></p>
+<p><strong>3. Fork &amp; Pull Request</strong></p>
+<blockquote><p>오픈소스를 활용한 개발 및 운영을 할 때 활용하는 모델로 <code class="language-plaintext highlighter-rouge">2</code>번 모델과 비슷하지만 별도 권한이나 분기를 할당받지 않고 <code class="language-plaintext highlighter-rouge">Fork</code>하여 본인의 저장소에서 자유롭게 개발을 진행한 뒤 <code class="language-plaintext highlighter-rouge">project owner</code> 에게 pull request 하는 방식으로 작업을 진행한다.</p></blockquote>
+<ul><li>다양한 오픈소스를 활용해 권한 없이도 바로 본인의 저장소에서 개발을 진행할 수 있다는 장점이 있다.</li></ul>
+<hr>
+<h4 id="radio_button-1-코드-배포-도구">
+<img class="emoji" title=":radio_button:" alt=":radio_button:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f518.png" height="20" width="20"> 1. 코드 배포 도구</h4>
+<hr>
+</div>
+<div class="post-tail-wrapper text-muted">
+<div class="post-meta mb-3"> <i class="far fa-folder-open fa-fw mr-1"></i> <a href="/categories/git-github/">Git&amp;Github</a>
+</div>
+<div class="post-tags"> <i class="fa fa-tags fa-fw mr-1"></i> <a href="/tags/git/" class="post-tag no-text-decoration">git</a> <a href="/tags/github/" class="post-tag no-text-decoration">github</a>
+</div>
+<div class="post-tail-bottom d-flex justify-content-between align-items-center mt-3 pt-5 pb-2">
+<div class="license-wrapper"> This post is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> by the author.</div>
+<div class="share-wrapper"> <span class="share-label text-muted mr-1">Share</span> <span class="share-icons"> <a href="https://twitter.com/intent/tweet?text=Git&amp;Github%20%EA%B0%9C%EB%85%90%20%EC%A0%95%EB%A6%AC%20-%20INEED%20COFFEE&amp;url=https://ineed-coffee.github.io/posts/Git-concept/" data-toggle="tooltip" data-placement="top" title="Twitter" target="_blank" rel="noopener" aria-label="Twitter"> <i class="fa-fw fab fa-twitter"></i> </a> <a href="https://www.facebook.com/sharer/sharer.php?title=Git&amp;Github%20%EA%B0%9C%EB%85%90%20%EC%A0%95%EB%A6%AC%20-%20INEED%20COFFEE&amp;u=https://ineed-coffee.github.io/posts/Git-concept/" data-toggle="tooltip" data-placement="top" title="Facebook" target="_blank" rel="noopener" aria-label="Facebook"> <i class="fa-fw fab fa-facebook-square"></i> </a> <a href="https://telegram.me/share?text=Git&amp;Github%20%EA%B0%9C%EB%85%90%20%EC%A0%95%EB%A6%AC%20-%20INEED%20COFFEE&amp;url=https://ineed-coffee.github.io/posts/Git-concept/" data-toggle="tooltip" data-placement="top" title="Telegram" target="_blank" rel="noopener" aria-label="Telegram"> <i class="fa-fw fab fa-telegram"></i> </a> <i class="fa-fw fas fa-link small" onclick="copyLink()" data-toggle="tooltip" data-placement="top" title="Copy link"></i> </span>
+</div>
+</div>
+</div>
+</div></div>
+<div id="panel-wrapper" class="col-xl-3 pl-2 text-muted topbar-down">
+<div class="access">
+<div id="access-lastmod" class="post"> <span>Recent Update</span><ul class="post-content pl-0 pb-1 ml-1 mt-2">
+<li><a href="/posts/CSC321-study-log/">CSC321 스터디 진행 사항 (Toronto Univ. , Roger Grosse )</a></li>
+<li><a href="/posts/CSC321-lec13.6/">【Lecture 13.6】Object Detection YOLO v1</a></li>
+<li><a href="/posts/CSC321-lec13.5-part1/">【Lecture 13.5】Object Detection Faster R-CNN part1</a></li>
+<li><a href="/posts/CSC321-sc.2/">【Special Course 2】Implementing Inception module using keras Functional API</a></li>
+<li><a href="/posts/CSC321-sc.1/">【Special Course 1】DNN practice &amp; keras overview from Colab</a></li>
+</ul>
+</div>
+<div id="access-tags"> <span>Trending Tags</span><div class="d-flex flex-wrap mt-3 mb-1 mr-3"> <a class="post-tag" href="/tags/deep-learning/">deep learning</a> <a class="post-tag" href="/tags/csc321/">csc321</a> <a class="post-tag" href="/tags/cnn/">cnn</a> <a class="post-tag" href="/tags/colab/">colab</a> <a class="post-tag" href="/tags/object-detection/">object detection</a> <a class="post-tag" href="/tags/python/">python</a> <a class="post-tag" href="/tags/sklearn/">sklearn</a> <a class="post-tag" href="/tags/git/">git</a> <a class="post-tag" href="/tags/github/">github</a> <a class="post-tag" href="/tags/machine-learning/">machine learning</a>
+</div>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.js"></script><div id="toc-wrapper" class="pl-0 pr-4 mb-5"> <span class="pl-3 pt-2 mb-2">Contents</span><nav id="toc" data-toggle="toc"></nav>
+</div>
+</div>
+</div>
+<div class="row"><div class="col-12 col-lg-11 col-xl-8"><div id="post-extend-wrapper" class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4">
+<div id="related-posts" class="mt-5 mb-2 mb-sm-4">
+<h3 class="pt-2 mt-1 mb-4 ml-1" data-toc-skip>Further Reading</h3>
+<div class="card-deck mb-4">
+<div class="card"> <a href="/posts/Git-grammar/"><div class="card-body"> <span class="timeago small"> Sep 19, 2020 <i class="unloaded">2020-09-19T15:00:00+09:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>Git 문법 정리</h3>
+<div class="text-muted small"><p> Git 문법 정리 <img class="emoji" title=":arrow_right:" alt=":arrow_right:" src="https://github.githubassets.com/images/icons/emoji/unicode/27a1.png" height="20" width="20"> init 현재 저장소를 git 이 관리할 저장소로 초기화 한다. $ git init ※ 주의 : 초기화는 가장 상단의 폴더에 , 한.번.만 진행한다. 부모/자식 관계의 저장소가 같이 초기화가 진행되면 버전관리에 치명적. <img class="emoji" title=":arrow_right:" alt=":arrow_right:" src="https://github.githubassets.com/images/icons/emoji/unicode/27a1.png" height="20" width="20"> add 현재 코드의 상태의 스냅샷...</p></div>
+</div></a>
+</div>
+<div class="card"> <a href="/posts/git-tips/"><div class="card-body"> <span class="timeago small"> Sep 23, 2020 <i class="unloaded">2020-09-23T15:00:00+09:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>Git &amp; Github 꿀팁 정리</h3>
+<div class="text-muted small"><p> Git &amp; Github 꿀팁 정리 <img class="emoji" title=":arrow_right:" alt=":arrow_right:" src="https://github.githubassets.com/images/icons/emoji/unicode/27a1.png" height="20" width="20"> Git 입문 참고 자료 누구나 쉽게 이해할 수 있는 Git 입문 <img class="emoji" title=":arrow_right:" alt=":arrow_right:" src="https://github.githubassets.com/images/icons/emoji/unicode/27a1.png" height="20" width="20"> Git 파일 관리 과정을 시각적으로 볼 수 있는 웹 ex) ​ ​ git visualizing ​ <img class="emoji" title=":arrow_right:" alt=":arrow_right:" src="https://github.githubassets.com/images/icons/emoji/unicode/27a1.png" height="20" width="20"> 프로필 화면에도 README 파일 추가하기 다른...</p></div>
+</div></a>
+</div>
+<div class="card"> <a href="/posts/Building-Jekyll-environment-for-Github-page-on-Windows10/"><div class="card-body"> <span class="timeago small"> Mar 9 <i class="unloaded">2021-03-09T15:00:00+09:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>Github Page 입문을 위한 Jekyll 환경 구축 ( Windows 10)</h3>
+<div class="text-muted small"><p> Github Page 입문을 위한 Jekyll 환경 구축 ( Windows 10) <img class="emoji" title=":arrow_right:" alt=":arrow_right:" src="https://github.githubassets.com/images/icons/emoji/unicode/27a1.png" height="20" width="20"> Step1. Download Ruby-installer Ruby-installer for windows 원하는 버전의 installer를 이용해도 상관없지만, 어떤 버전을 쓸지 잘 모르겠다면 오른쪽에 recommended version...</p></div>
+</div></a>
+</div>
+</div>
+</div>
+<div class="post-navigation d-flex justify-content-between"> <a href="/posts/Git-grammar/" class="btn btn-outline-primary" prompt="Older"><p>Git 문법 정리</p></a> <a href="/posts/shell-command/" class="btn btn-outline-primary" prompt="Newer"><p>쉘 명령 정리</p></a>
+</div>
+<script src="https://utteranc.es/client.js" repo="ineed-coffee/ineed-coffee.github.io" issue-term="pathname" theme="github-light" crossorigin="anonymous" async> </script>
+</div></div></div>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script> <script type="text/javascript"> const imgs = document.querySelectorAll('.post-content img'); const observer = lozad(imgs); observer.observe(); </script><footer class="d-flex w-100 justify-content-center"><div class="d-flex justify-content-between align-items-center">
+<div class="footer-left"><p class="mb-0"> © 2021 <a href="https://github.com/ineed-coffee">INEED COFFEE</a>. <span data-toggle="tooltip" data-placement="top" title="Except where otherwise noted, the blog posts on this site are licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author."> Some rights reserved. </span></p></div>
+<div class="footer-right"><p class="mb-0"> Powered by <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a> with <a href="https://github.com/cotes2020/jekyll-theme-chirpy" target="_blank" rel="noopener">Chirpy</a> theme.</p></div>
+</div></footer>
+</div>
+<div id="search-result-wrapper" class="d-flex justify-content-center unloaded"><div class="col-12 col-sm-11 post-content">
+<div id="search-hints">
+<h4 class="text-muted mb-4">Trending Tags</h4>
+<a class="post-tag" href="/tags/deep-learning/">deep learning</a> <a class="post-tag" href="/tags/csc321/">csc321</a> <a class="post-tag" href="/tags/cnn/">cnn</a> <a class="post-tag" href="/tags/colab/">colab</a> <a class="post-tag" href="/tags/object-detection/">object detection</a> <a class="post-tag" href="/tags/python/">python</a> <a class="post-tag" href="/tags/sklearn/">sklearn</a> <a class="post-tag" href="/tags/git/">git</a> <a class="post-tag" href="/tags/github/">github</a> <a class="post-tag" href="/tags/machine-learning/">machine learning</a>
+</div>
+<div id="search-results" class="d-flex flex-wrap justify-content-center text-muted mt-3"></div>
+</div></div>
+</div><div id="mask"></div><a id="back-to-top" href="#" aria-label="back-to-top" class="btn btn-lg btn-box-shadow" role="button"> <i class="fas fa-angle-up"></i> </a> <script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@1.7.3/dest/simple-jekyll-search.min.js"></script> <script> SimpleJekyllSearch({ searchInput: document.getElementById('search-input'), resultsContainer: document.getElementById('search-results'), json: '/assets/js/data/search.json', searchResultTemplate: '<div class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-lg-4 pr-lg-4 pl-xl-0 pr-xl-0"> <a href="https://ineed-coffee.github.io{url}">{title}</a><div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1"> {categories} {tags}</div><p>{snippet}</p></div>', noResultsText: '<p class="mt-5">Oops! No result founds.</p>', templateMiddleware: function(prop, value, template) { if (prop === 'categories') { if (value === '') { return `${value}`; } else { return `<div class="mr-sm-4"><i class="far fa-folder fa-fw"></i>${value}</div>`; } } if (prop === 'tags') { if (value === '') { return `${value}`; } else { return `<div><i class="fa fa-tag fa-fw"></i>${value}</div>`; } } } }); </script>
